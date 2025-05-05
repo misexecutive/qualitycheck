@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quality Issue Reporter</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta name="theme-color" content="#3498db">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1><i class="fas fa-clipboard-check"></i> Quality Issue Reporter</h1>
+      <button id="refreshBtn" aria-label="Refresh issues list">Refresh Issues</button>
+    </header>
+
+    <section id="issueList">
+      <!-- Issues will be injected here -->
+      <div class="loading-container">
+        <div class="loader"></div>
+      </div>
+    </section>
+
+    <button id="openFormBtn" class="fab" aria-label="Create new issue report">
+      <span class="visually-hidden">Add issue</span>
+      <i class="fas fa-plus"></i>
+    </button>
+
+    <div id="issueFormModal" class="modal">
+      <div class="modal-content">
+        <span class="close" aria-label="Close form">&times;</span>
+        <h2><i class="fas fa-bug"></i> Report an Issue</h2>
+        <form id="issueForm">
+          <div class="form-group">
+            <label for="reporterName">Name</label>
+            <input type="text" id="reporterName" name="reporterName" required placeholder="Your name">
+          </div>
+          
+          <div class="form-group">
+            <label for="reporterRole">Role</label>
+            <input type="text" id="reporterRole" name="reporterRole" required placeholder="Your position/role">
+          </div>
+          
+          <div class="form-group">
+            <label for="issueType">Issue Type</label>
+            <select id="issueType" name="issueType" required>
+              <option value="" disabled selected>Select issue type</option>
+              <option value="Damage">Damage</option>
+              <option value="Missing Parts">Missing Parts</option>
+              <option value="Quality Defect">Quality Defect</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea id="description" name="description" rows="3" required placeholder="Describe the issue in detail..."></textarea>
+          </div>
+          
+          <div class="form-group">
+            <label for="imageInput">Photo</label>
+            <div class="file-input-wrapper">
+              <input type="file" id="imageInput" accept="image/*" required>
+              <label for="imageInput" class="file-label">
+                <i class="fas fa-camera"></i>
+                <span>Choose image</span>
+              </label>
+            </div>
+            <small class="file-help-text">Max file size: 5MB</small>
+            <img id="preview" alt="Issue preview" />
+          </div>
+          
+          <button type="submit">Submit Report</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast-container">
+    <!-- Toast notifications will appear here -->
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
